@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-square',
@@ -8,12 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SquareComponent implements OnInit {
 
   @Input() color!: string;
+  @Input() index!: number;
   isClicked: boolean = false;
+
+  @Output() clickedSquare: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.color);
-  }
+  ngOnInit(): void { }
 
+  toggle(): void {
+    this.isClicked = !this.isClicked;
+    this.clickedSquare.emit(this.index);
+  }
 }

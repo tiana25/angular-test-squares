@@ -9,16 +9,17 @@ export class AppComponent implements OnInit{
   title = 'angular-squares-app';
   result: string[] = [];
   squaresAmount = 6;
+  amountOfClickedBlueSquares = 0;
+  amountOfBlueSquares = 0;
   colors = ['red', 'green', 'purple', 'pink', 'yellow']
 
   ngOnInit(): void {
-    let amountOfBlueSquares = this.getAmountOfBlueSquares();
-    for(let i = 0; i < amountOfBlueSquares; i++) {
+    this.amountOfBlueSquares = this.getAmountOfBlueSquares();
+    for(let i = 0; i < this.amountOfBlueSquares; i++) {
       this.result.push('blue');
     }
-    this.getUniqueRandomNumbers(6-amountOfBlueSquares).forEach((el) => this.result.push(this.colors[el]));
+    this.getUniqueRandomNumbers(this.squaresAmount-this.amountOfBlueSquares).forEach((el) => this.result.push(this.colors[el]));
     this.shuffleArray(this.result);
-    console.log(this.result);
   }
   
   getAmountOfBlueSquares(): number {
@@ -43,4 +44,16 @@ export class AppComponent implements OnInit{
     }
   }
 
+  onClickedSquare(num: number): void {
+    (this.result[num] === 'blue') && this.amountOfClickedBlueSquares++;
+  }
+  
+  onSubmit(): void {
+    if(this.amountOfClickedBlueSquares < this.amountOfBlueSquares) {
+      alert("Choose all blue squares :)");
+    } else {
+      alert("Well done! Play again:)");
+      window.location.reload();
+    } 
+  }
 }
