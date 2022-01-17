@@ -1,25 +1,13 @@
 
-
 <div class="wrapper">
   <div class="block">
     <div class="block__row">
       <div class="block__column">
-        <div class="block__item" [ngClass]="result[0]">Square1</div>
-      </div>
-      <div class="block__column">
-        <div class="block__item" [ngClass]="result[1]">Square2</div>
-      </div>
-      <div class="block__column">
-        <div class="block__item" [ngClass]="result[2]">Square3</div>
-      </div>
-      <div class="block__column">
-        <div class="block__item" [ngClass]="result[3]">Square4</div>
-      </div>
-      <div class="block__column">
-        <div class="block__item" [ngClass]="result[4]">Square5</div>
-      </div>
-      <div class="block__column">
-        <div class="block__item" [ngClass]="result[5]">Square6</div>
+        <app-square *ngFor="let el of result; let index = index" [color]="el">
+
+        </app-square>
+        <!-- <div class="block__item" *ngFor="let el of result; let index = index"
+          [ngClass]="result[index]">Square {{index}}</div> -->
       </div>
     </div>
   </div>

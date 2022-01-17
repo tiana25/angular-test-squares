@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'angular-squares-app';
   result: string[] = [];
+  squaresAmount = 6;
   colors = ['red', 'green', 'purple', 'pink', 'yellow']
 
   ngOnInit(): void {
